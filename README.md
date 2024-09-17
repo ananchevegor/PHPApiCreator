@@ -111,7 +111,7 @@ $pass = 'your_password';
 ## Query Exemple
 
 ```query
-https://your-domain.com/webservices/country.php?where=name like 'Rus' and iso like 'ru'
+https://your-domain.com/webservices/country.php?where=name like 'Rus' and iso eq 'RU'
 ```
 
 ## Answer
