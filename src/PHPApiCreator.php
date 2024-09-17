@@ -1,5 +1,5 @@
 <?php
-
+namespace ananchev\PHPApi;
 
 class PHPApiCreator
 {
