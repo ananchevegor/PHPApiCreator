@@ -108,3 +108,29 @@ $dbname = 'your_database';
 $user = 'your_username';
 $pass = 'your_password';
 ```
+## Query Exemple
+
+https://your-domain.com/webservices/country.php?where=name like 'Rus' and iso like 'ru'
+
+
+## Answer
+
+```json
+{
+    "table": "country",
+    "time": 1726581512,
+    "payload": [
+         {
+            "id": "177",
+            "iso": "RU",
+            "name": "RUSSIAN FEDERATION",
+            "nicename": "Russian Federation",
+            "iso3": "RUS",
+            "numcode": "643",
+            "phonecode": "70"
+        }
+    ]
+}
+```
+
+
