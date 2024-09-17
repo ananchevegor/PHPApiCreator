@@ -247,7 +247,6 @@ class PHPApiCreator
         } else {
             return false;
         }
-
         @mysqli_close($connection);
     }
 }
