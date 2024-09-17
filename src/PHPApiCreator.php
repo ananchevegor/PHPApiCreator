@@ -76,8 +76,13 @@ class PHPApiCreator
                             if ($i > 0) {
                                 $query_get .= " AND ";
                             }
-                            preg_match("/(.+)\s+eq\s+'(.+)'/", $m, $matches);
-                            $query_get .= mysqli_real_escape_string($connection, $matches[1])."='".mysqli_real_escape_string($connection, $matches[2])."'";
+                            if (!stripos($m, 'like')) {
+                                preg_match("/(.+)\s+eq\s+'(.+)'/", $m, $matches);
+                                $query_get .= mysqli_real_escape_string($connection, $matches[1])."='".mysqli_real_escape_string($connection, $matches[2])."'";
+                            }else {
+                                preg_match("/(.+)\s+like\s+'(.+)'/", $m, $matches);
+                                $query_get .= mysqli_real_escape_string($connection, $matches[1])." LIKE '%".mysqli_real_escape_string($connection, $matches[2])."%'";
+                            }
                         }
                     }else {
                         $matches_array = explode(" or ", $value);
@@ -86,8 +91,13 @@ class PHPApiCreator
                             if ($i > 0) {
                                 $query_get .= " OR ";
                             }
-                            preg_match("/(.+)\s+eq\s+'(.+)'/", $m, $matches);
-                            $query_get .= mysqli_real_escape_string($connection, $matches[1])."='".mysqli_real_escape_string($connection, $matches[2])."'";
+                            if (!stripos($m, 'like')) {
+                                preg_match("/(.+)\s+eq\s+'(.+)'/", $m, $matches);
+                                $query_get .= mysqli_real_escape_string($connection, $matches[1])."='".mysqli_real_escape_string($connection, $matches[2])."'";
+                            }else {
+                                preg_match("/(.+)\s+like\s+'(.+)'/", $m, $matches);
+                                $query_get .= mysqli_real_escape_string($connection, $matches[1])." LIKE '%".mysqli_real_escape_string($connection, $matches[2])."%'";
+                            }
                         }
                     }
                     
