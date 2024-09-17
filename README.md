@@ -110,6 +110,10 @@ $pass = 'your_password';
 ```
 ## Query Exemple
 
+table_name - country
+```php
+   $currentEndpoint = 'country';
+```
 ```query
 https://your-domain.com/webservices/country.php?where=name like 'Rus' and iso eq 'RU'
 ```
