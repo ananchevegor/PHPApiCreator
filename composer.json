@@ -13,7 +13,6 @@
             "email": "egorka225522@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
     "require": {
         "php": ">=8.1"
     }
