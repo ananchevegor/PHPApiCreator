@@ -22,7 +22,6 @@
    ```bash
    composer require ananchev/php-api-creator
 
-
 # PHP API Endpoint Setup Using PHPApiCreator
 
 ## Usage
