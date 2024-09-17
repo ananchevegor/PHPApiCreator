@@ -30,7 +30,7 @@
 Here is an example of setting up a PHP API endpoint using PHPApiCreator:
 
 ```php
-database_connection(); // Switch between HTTP methods
+$connection = $api->database_connection(); // Switch between HTTP methods
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
         echo $api->GET($_GET, $connection, $currentEndpoint);
