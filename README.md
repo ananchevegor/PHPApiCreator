@@ -30,6 +30,7 @@
 Here is an example of setting up a PHP API endpoint using PHPApiCreator:
 
 ```php
+$currentEndpoint = "endpointname";
 $connection = $api->database_connection(); // Switch between HTTP methods
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
@@ -107,6 +108,4 @@ $host = 'localhost';
 $dbname = 'your_database';
 $user = 'your_username';
 $pass = 'your_password';
-
-$connection = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
 ```
