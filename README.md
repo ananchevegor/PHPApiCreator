@@ -1,24 +1,33 @@
-PHPApiCreator - README
-PHPApiCreator is a PHP library that makes creating scalable APIs simple and efficient. It allows you to manage database connections, handle different HTTP methods (GET, PUT, PATCH, DELETE), and structure API responses in JSON format. Below is a sample use case of the library for quickly setting up an API with database support.
+# PHPApiCreator
 
-Features
-Easy Database Integration: Connect to a MySQL database effortlessly.
-HTTP Method Handling: Supports GET, PUT, PATCH, DELETE requests.
-RESTful Design: Follows REST principles for API structure.
-JSON Responses: Automatically sets headers and outputs in JSON.
-Error Handling: Centralized and consistent error responses.
-Installation
+**PHPApiCreator** is a PHP library designed to simplify the creation of scalable APIs. It supports managing database connections, handling various HTTP methods (GET, PUT, PATCH, DELETE), and structuring API responses in JSON format. Below is a quick guide on how to set up and use the library.
 
-Clone the repository:
-git clone https://github.com/ananchevegor/PHPApiCreator.git
+## Features
+
+- **Easy Database Integration**: Connect to a MySQL database effortlessly.
+- **HTTP Method Handling**: Supports GET, PUT, PATCH, DELETE requests.
+- **RESTful Design**: Follows REST principles for API structure.
+- **JSON Responses**: Automatically sets headers and outputs in JSON.
+- **Error Handling**: Centralized and consistent error responses.
+
+## Installation
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/ananchevegor/PHPApiCreator.git
+
+2. **Install dependencies via Composer:**:
+
+   ```bash
+   composer require ananchev/php-api-creator
 
 
-Install dependencies via Composer:
-composer require ananchev/php-api-creator
+Usage
+Here is an example of setting up a PHP API endpoint using PHPApiCreator:
 
-
-Include the library in your project:
-
+php
+Code kopieren
 <?php
 require_once 'PhpApiCreator.php';
 header('Content-Type: application/json; charset=utf-8');
@@ -69,35 +78,38 @@ Error Handling: If an unsupported request method is used, a standardized error m
 HTTP Methods
 GET: Fetch data from the database.
 
-
+php
+Code kopieren
 echo $api->GET($_GET, $connection, $currentEndpoint);
 PUT: Update an existing record.
 
-
+php
+Code kopieren
 $inputs = file_get_contents("php://input");
 echo $api->PUT($inputs, $connection, $currentEndpoint);
 PATCH: Partially update an existing record.
 
-
+php
+Code kopieren
 $inputs = file_get_contents("php://input");
 echo $api->PATCH($inputs, $connection, $currentEndpoint);
 DELETE: Delete a record from the database.
 
-
+php
+Code kopieren
 $inputs = file_get_contents("php://input");
 echo $api->DELETE($inputs, $connection, $currentEndpoint);
 Sample Configuration
 Ensure your config.php file contains the correct database credentials:
 
-
+php
+Code kopieren
 <?php
 $db_host = 'localhost';
 $db_name = 'your_database_name';
 $db_user = 'your_username';
 $db_pass = 'your_password';
 ?>
-
-
 License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
