@@ -71,30 +71,30 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
 - **GET:** Fetch data from the database.
 
-    ```php
-    echo $api->GET($_GET, $connection, $currentEndpoint);
-    ```
+ ```php
+ echo $api->GET($_GET, $connection, $currentEndpoint);
+ ```
 
 - **PUT:** Update an existing record.
 
-    ```php
-    $inputs = file_get_contents("php://input");
-    echo $api->PUT($inputs, $connection, $currentEndpoint);
-    ```
+ ```php
+ $inputs = file_get_contents("php://input");
+ echo $api->PUT($inputs, $connection, $currentEndpoint);
+ ```
 
 - **PATCH:** Partially update an existing record.
 
-    ```php
-    $inputs = file_get_contents("php://input");
-    echo $api->PATCH($inputs, $connection, $currentEndpoint);
-    ```
+ ```php
+ $inputs = file_get_contents("php://input");
+ echo $api->PATCH($inputs, $connection, $currentEndpoint);
+ ```
 
 - **DELETE:** Delete a record from the database.
 
-    ```php
-    $inputs = file_get_contents("php://input");
-    echo $api->DELETE($inputs, $connection, $currentEndpoint);
-    ```
+ ```php
+ $inputs = file_get_contents("php://input");
+ echo $api->DELETE($inputs, $connection, $currentEndpoint);
+ ```
 
 ## Sample Configuration
 
