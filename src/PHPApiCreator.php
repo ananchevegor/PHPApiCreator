@@ -1,5 +1,5 @@
 <?php
-namespace ananchev\PHPApi;
+namespace Ananchev\PhpApiCreator;
 class PHPApiCreator
 {
     private $db_host;
