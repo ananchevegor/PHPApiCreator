@@ -58,3 +58,54 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
 }
 ?>
+
+
+# Explanation
+
+- **Database Connection:** The API connects to a MySQL database using credentials provided in the `config.php` file.
+- **Routing:** Based on the HTTP request method, the appropriate API function (`GET`, `PUT`, `PATCH`, `DELETE`) is called.
+- **Dynamic Endpoints:** The `$currentEndpoint` variable dynamically captures the endpoint name from the filename, making it reusable for different API endpoints.
+- **Error Handling:** If an unsupported request method is used, a standardized error message is returned.
+
+## HTTP Methods
+
+- **GET:** Fetch data from the database.
+
+    ```php
+    echo $api->GET($_GET, $connection, $currentEndpoint);
+    ```
+
+- **PUT:** Update an existing record.
+
+    ```php
+    $inputs = file_get_contents("php://input");
+    echo $api->PUT($inputs, $connection, $currentEndpoint);
+    ```
+
+- **PATCH:** Partially update an existing record.
+
+    ```php
+    $inputs = file_get_contents("php://input");
+    echo $api->PATCH($inputs, $connection, $currentEndpoint);
+    ```
+
+- **DELETE:** Delete a record from the database.
+
+    ```php
+    $inputs = file_get_contents("php://input");
+    echo $api->DELETE($inputs, $connection, $currentEndpoint);
+    ```
+
+## Sample Configuration
+
+Ensure your `config.php` file contains the correct database credentials:
+
+```php
+// Example configuration
+$host = 'localhost';
+$dbname = 'your_database';
+$user = 'your_username';
+$pass = 'your_password';
+
+$connection = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
+
