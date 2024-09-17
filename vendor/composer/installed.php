@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'ananchev/php-api-creator',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => '5b2f4c744d0851497c7a7c71266ff27e84d0348f',
+        'pretty_version' => '1.0.0',
+        'version' => '1.0.0.0',
+        'reference' => NULL,
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'ananchev/php-api-creator' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '5b2f4c744d0851497c7a7c71266ff27e84d0348f',
+            'pretty_version' => '1.0.0',
+            'version' => '1.0.0.0',
+            'reference' => NULL,
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
