@@ -58,6 +58,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
 }
 ?>
+```
 
 
 # Explanation
@@ -108,4 +109,4 @@ $user = 'your_username';
 $pass = 'your_password';
 
 $connection = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
-
+```
