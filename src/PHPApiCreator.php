@@ -22,7 +22,7 @@ class PHPApiCreator
         return mysqli_connect($this->db_host, $this->db_user, $this->db_pass, $this->db_name);
     }
 
-    public function GET(array $GET, mysqli $connection, string $currentEndpoint)
+    public function GET(array $GET, \mysqli $connection, string $currentEndpoint)
     {
 
 
@@ -113,7 +113,7 @@ class PHPApiCreator
     }
 
 
-    public function PUT($rawData, mysqli $connection, string $currentEndpoint)
+    public function PUT($rawData, \mysqli $connection, string $currentEndpoint)
     {
 
         if (!$connection) {
@@ -157,7 +157,7 @@ class PHPApiCreator
     }
 
 
-    public function PATCH($rawData, mysqli $connection, string $currentEndpoint)
+    public function PATCH($rawData, \mysqli $connection, string $currentEndpoint)
     {
 
         if (!$connection) {
@@ -197,7 +197,7 @@ class PHPApiCreator
         return json_encode($endpoint_conclusion, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
     }
 
-    public function DELETE($rawData, mysqli $connection, string $currentEndpoint)
+    public function DELETE($rawData, \mysqli $connection, string $currentEndpoint)
     {
 
         if (!$connection) {
@@ -233,7 +233,7 @@ class PHPApiCreator
     }
 
 
-    private function table_exist(mysqli $connection, string $tableName)
+    private function table_exist(\mysqli $connection, string $tableName)
     {
         if (!$connection) {
             die("Connection error: " . mysqli_connect_error());
