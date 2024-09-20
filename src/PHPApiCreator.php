@@ -123,7 +123,7 @@ class PHPApiCreator
     }
 
 
-    public function PUT($rawData, \mysqli $connection, string $currentEndpoint)
+    public function POST($rawData, \mysqli $connection, string $currentEndpoint)
     {
 
         if (!$connection) {
