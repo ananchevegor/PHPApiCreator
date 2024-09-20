@@ -78,7 +78,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 - **POST:** Update an existing record.
 
  ```php
- echo $api->PSOT($_POST, $connection, $currentEndpoint);
+ echo $api->POST($_POST, $connection, $currentEndpoint);
  ```
 
 - **PATCH:** Partially update an existing record.
