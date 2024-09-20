@@ -22,7 +22,6 @@
    ```bash
    composer require ananchev/php-api-creator
 
-
 # PHP API Endpoint Setup Using PHPApiCreator
 
 ## Usage
@@ -109,3 +108,34 @@ $dbname = 'your_database';
 $user = 'your_username';
 $pass = 'your_password';
 ```
+## Query Exemple
+
+table_name - country
+```php
+$currentEndpoint = 'country';
+```
+```query
+https://your-domain.com/webservices/country.php?where=name like 'Rus' and iso eq 'RU'
+```
+
+## Answer
+
+```json
+{
+    "table": "country",
+    "time": 1726581512,
+    "payload": [
+         {
+            "id": "177",
+            "iso": "RU",
+            "name": "RUSSIAN FEDERATION",
+            "nicename": "Russian Federation",
+            "iso3": "RUS",
+            "numcode": "643",
+            "phonecode": "70"
+        }
+    ]
+}
+```
+
+
