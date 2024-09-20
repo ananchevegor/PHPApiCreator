@@ -35,9 +35,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
         echo $api->GET($_GET, $connection, $currentEndpoint);
         break;
-    case 'PUT':
-        $inputs = file_get_contents("php://input");
-        echo $api->PUT($inputs, $connection, $currentEndpoint);
+    case 'POST':
+        echo $api->PUT($_POST, $connection, $currentEndpoint);
         break;
     case 'PATCH':
         $inputs = file_get_contents("php://input");
@@ -64,7 +63,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 # Explanation
 
 - **Database Connection:** The API connects to a MySQL database using credentials provided in the `config.php` file.
-- **Routing:** Based on the HTTP request method, the appropriate API function (`GET`, `PUT`, `PATCH`, `DELETE`) is called.
+- **Routing:** Based on the HTTP request method, the appropriate API function (`GET`, `POST`, `PATCH`, `DELETE`) is called.
 - **Dynamic Endpoints:** The `$currentEndpoint` variable dynamically captures the endpoint name from the filename, making it reusable for different API endpoints.
 - **Error Handling:** If an unsupported request method is used, a standardized error message is returned.
 
@@ -76,11 +75,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
  echo $api->GET($_GET, $connection, $currentEndpoint);
  ```
 
-- **PUT:** Update an existing record.
+- **POST:** Update an existing record.
 
  ```php
- $inputs = file_get_contents("php://input");
- echo $api->PUT($inputs, $connection, $currentEndpoint);
+ echo $api->PSOT($_POST, $connection, $currentEndpoint);
  ```
 
 - **PATCH:** Partially update an existing record.
