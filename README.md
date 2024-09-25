@@ -72,27 +72,27 @@ switch ($_SERVER['REQUEST_METHOD']) {
 - **GET:** Fetch data from the database.
 
  ```php
- echo $api->GET($_GET, $connection, $currentEndpoint);
+ echo $api->token($_SERVER)->GET($_GET, $connection, $currentEndpoint);
  ```
 
 - **POST:** Update an existing record.
 
  ```php
- echo $api->POST($_POST, $connection, $currentEndpoint);
+ echo $api->token($_SERVER)->POST($_POST, $connection, $currentEndpoint);
  ```
 
 - **PATCH:** Partially update an existing record.
 
  ```php
  $inputs = file_get_contents("php://input");
- echo $api->PATCH($inputs, $connection, $currentEndpoint);
+ echo $api->token($_SERVER)->PATCH($inputs, $connection, $currentEndpoint);
  ```
 
 - **DELETE:** Delete a record from the database.
 
  ```php
  $inputs = file_get_contents("php://input");
- echo $api->DELETE($inputs, $connection, $currentEndpoint);
+ echo $api->token($_SERVER)->DELETE($inputs, $connection, $currentEndpoint);
  ```
 
 ## Sample Configuration
@@ -113,7 +113,7 @@ table_name - country
 $currentEndpoint = 'country';
 ```
 ```query
-https://your-domain.com/webservices/country.php?where=name like 'Rus' and iso eq 'RU'
+https://your-domain.com/webservices/country?where=name like 'Rus' and iso eq 'RU'
 ```
 
 ## Answer
