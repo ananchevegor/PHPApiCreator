@@ -1,11 +1,11 @@
 # PHPApiCreator
 
-**PHPApiCreator** is a PHP library designed to simplify the creation of scalable APIs. It supports managing database connections, handling various HTTP methods (GET, PUT, PATCH, DELETE), and structuring API responses in JSON format. Below is a quick guide on how to set up and use the library.
+**PHPApiCreator** is a PHP library designed to simplify the creation of scalable APIs. It supports managing database connections, handling various HTTP methods (GET, POST, PATCH, DELETE), and structuring API responses in JSON format. Below is a quick guide on how to set up and use the library.
 
 ## Features
 
 - **Easy Database Integration**: Connect to a MySQL database effortlessly.
-- **HTTP Method Handling**: Supports GET, PUT, PATCH, DELETE requests.
+- **HTTP Method Handling**: Supports GET, POST, PATCH, DELETE requests.
 - **RESTful Design**: Follows REST principles for API structure.
 - **JSON Responses**: Automatically sets headers and outputs in JSON.
 - **Error Handling**: Centralized and consistent error responses.
@@ -35,9 +35,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
         echo $api->GET($_GET, $connection, $currentEndpoint);
         break;
-    case 'PUT':
-        $inputs = file_get_contents("php://input");
-        echo $api->PUT($inputs, $connection, $currentEndpoint);
+    case 'POST':
+        echo $api->POST($_POST, $connection, $currentEndpoint);
         break;
     case 'PATCH':
         $inputs = file_get_contents("php://input");
@@ -64,7 +63,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 # Explanation
 
 - **Database Connection:** The API connects to a MySQL database using credentials provided in the `config.php` file.
-- **Routing:** Based on the HTTP request method, the appropriate API function (`GET`, `PUT`, `PATCH`, `DELETE`) is called.
+- **Routing:** Based on the HTTP request method, the appropriate API function (`GET`, `POST`, `PATCH`, `DELETE`) is called.
 - **Dynamic Endpoints:** The `$currentEndpoint` variable dynamically captures the endpoint name from the filename, making it reusable for different API endpoints.
 - **Error Handling:** If an unsupported request method is used, a standardized error message is returned.
 
@@ -76,11 +75,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
  echo $api->GET($_GET, $connection, $currentEndpoint);
  ```
 
-- **PUT:** Update an existing record.
+- **POST:** Update an existing record.
 
  ```php
- $inputs = file_get_contents("php://input");
- echo $api->PUT($inputs, $connection, $currentEndpoint);
+ echo $api->POST($_POST, $connection, $currentEndpoint);
  ```
 
 - **PATCH:** Partially update an existing record.
