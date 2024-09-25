@@ -260,7 +260,7 @@ class PHPApiCreator
         @mysqli_close($connection);
     }
 
-    public function token($SERVER, $token_code)
+    public function token($SERVER)
     {
         if(!isset($SERVER["HTTP_AUTHORIZATION"]))
         {
