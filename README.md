@@ -31,32 +31,8 @@ Here is an example of setting up a PHP API endpoint using PHPApiCreator:
 ```php
 $currentEndpoint = "endpointname";
 $api = new PHPApiCreator($db_host, $db_name, $db_user, $db_pass);
-$connection = $api->database_connection(); // Switch between HTTP methods
-switch ($_SERVER['REQUEST_METHOD']) {
-    case 'GET':
-        echo $api->token($_SERVER)->GET($_GET, $connection, $currentEndpoint);
-        break;
-    case 'POST':
-        echo $api->token($_SERVER)->POST($_POST, $connection, $currentEndpoint);
-        break;
-    case 'PATCH':
-        $inputs = file_get_contents("php://input");
-        echo $api->token($_SERVER)->PATCH($inputs, $connection, $currentEndpoint);
-        break;
-    case 'DELETE':
-        $inputs = file_get_contents("php://input");
-        echo $api->token($_SERVER)->DELETE($inputs, $connection, $currentEndpoint);
-        break;
-    default:
-        echo json_encode(array(
-            "table" => "none",
-            "time" => time(),
-            "payload" => array(
-                "error" => "The server does not support this type of request"
-            )
-        ));
-        break;
-}
+$connection = $api->database_connection();
+echo $api->SERVER_REQUEST($_SERVER, $token_code, $currentEndpoint, $connection);
 ?>
 ```
 
@@ -73,27 +49,27 @@ switch ($_SERVER['REQUEST_METHOD']) {
 - **GET:** Fetch data from the database.
 
  ```php
- echo $api->token($_SERVER)->GET($_GET, $connection, $currentEndpoint);
+$this->token($SERVER, $token_code)->GET($_GET, $connection, $currentEndpoint);
  ```
 
 - **POST:** Update an existing record.
 
  ```php
- echo $api->token($_SERVER)->POST($_POST, $connection, $currentEndpoint);
+$this->token($SERVER, $token_code)->POST($_POST, $connection, $currentEndpoint);
  ```
 
 - **PATCH:** Partially update an existing record.
 
  ```php
- $inputs = file_get_contents("php://input");
- echo $api->token($_SERVER)->PATCH($inputs, $connection, $currentEndpoint);
+$inputs = file_get_contents("php://input");
+$this->token($SERVER, $token_code)->PATCH($inputs, $connection, $currentEndpoint);
  ```
 
 - **DELETE:** Delete a record from the database.
 
  ```php
- $inputs = file_get_contents("php://input");
- echo $api->token($_SERVER)->DELETE($inputs, $connection, $currentEndpoint);
+$inputs = file_get_contents("php://input");
+$this->token($SERVER, $token_code)->DELETE($inputs, $connection, $currentEndpoint);
  ```
 
 ## Sample Configuration
