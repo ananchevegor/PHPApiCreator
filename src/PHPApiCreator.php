@@ -17,6 +17,7 @@ class PHPApiCreator
     }
 
 
+
     public function database_connection()
     {
         return mysqli_connect($this->db_host, $this->db_user, $this->db_pass, $this->db_name);
@@ -159,6 +160,7 @@ class PHPApiCreator
         $query_put .= ");";
         try {
             @mysqli_query($connection, $query_put);
+            http_response_code(201); 
             $endpoint_conclusion["payload"] = ["success" => "Data successful inserted"];
         } catch (\Throwable $th) {
             $endpoint_conclusion["payload"] = ["error" => "Data not inserted"];
@@ -260,7 +262,7 @@ class PHPApiCreator
         @mysqli_close($connection);
     }
 
-    public function token($SERVER)
+    private function token($SERVER)
     {
         if(!isset($SERVER["HTTP_AUTHORIZATION"]))
         {
@@ -275,6 +277,36 @@ class PHPApiCreator
         // Your code for Authorization
 
         return $this;
+    }
+
+    public function SERVER_REQUEST($SERVER, string $token_code, string $currentEndpoint, \mysqli $connection)
+    {   
+        switch ($SERVER['REQUEST_METHOD']) {
+            case 'GET':
+                echo $this->token($SERVER, $token_code)->GET($_GET, $connection, $currentEndpoint);
+                break;
+            case 'POST':
+                echo $this->token($SERVER, $token_code)->POST($_POST, $connection, $currentEndpoint);
+                break;
+            case 'PATCH':
+                $inputs = file_get_contents("php://input");
+                echo $this->token($SERVER, $token_code)->PATCH($inputs, $connection, $currentEndpoint);
+                break;
+            case 'DELETE':
+                $inputs = file_get_contents("php://input");
+                echo $this->token($SERVER, $token_code)->DELETE($inputs, $connection, $currentEndpoint);
+                break;
+            default:
+                http_response_code(405); 
+                echo json_encode(array(
+                    "table" => "none",
+                    "time" => time(),
+                    "payload" => array(
+                        "error" => "The server does not support this type of request"
+                    )
+                ));
+                break;
+        }
     }
 }
 ?>
