@@ -33,18 +33,18 @@ $currentEndpoint = "endpointname";
 $connection = $api->database_connection(); // Switch between HTTP methods
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
-        echo $api->GET($_GET, $connection, $currentEndpoint);
+        echo $api->token($_SERVER)->GET($_GET, $connection, $currentEndpoint);
         break;
     case 'POST':
-        echo $api->POST($_POST, $connection, $currentEndpoint);
+        echo $api->token($_SERVER)->POST($_POST, $connection, $currentEndpoint);
         break;
     case 'PATCH':
         $inputs = file_get_contents("php://input");
-        echo $api->PATCH($inputs, $connection, $currentEndpoint);
+        echo $api->token($_SERVER)->PATCH($inputs, $connection, $currentEndpoint);
         break;
     case 'DELETE':
         $inputs = file_get_contents("php://input");
-        echo $api->DELETE($inputs, $connection, $currentEndpoint);
+        echo $api->token($_SERVER)->DELETE($inputs, $connection, $currentEndpoint);
         break;
     default:
         echo json_encode(array(
