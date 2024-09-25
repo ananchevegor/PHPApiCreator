@@ -259,5 +259,22 @@ class PHPApiCreator
         }
         @mysqli_close($connection);
     }
+
+    public function token($SERVER, $token_code)
+    {
+        if(!isset($SERVER["HTTP_AUTHORIZATION"]))
+        {
+            http_response_code(401); 
+            header('Content-Type: application/json');
+            echo json_encode(['error' => 'Token is invalid. Incorrect exeprion'], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+            exit();
+        }
+        
+        $token_access = substr(getallheaders()['Authorization'], 7);
+
+        // Your code for Authorization
+
+        return $this;
+    }
 }
 ?>
